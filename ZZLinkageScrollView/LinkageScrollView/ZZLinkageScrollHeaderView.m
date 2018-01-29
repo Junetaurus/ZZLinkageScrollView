@@ -20,7 +20,7 @@
 @end
 
 static inline CGFloat cycleScrollViewHeight() {
-    return [UIScreen mainScreen].bounds.size.width/2;
+    return [UIScreen mainScreen].bounds.size.width * (330.0/600.0);
 }
 
 typedef enum : NSUInteger {
