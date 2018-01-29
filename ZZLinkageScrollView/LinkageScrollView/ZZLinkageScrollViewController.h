@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZLinkageScrollHeaderView.h"
 @class ZZLinkageScrollTableView;
 
-@interface ZZLinkageScrollViewController : UIViewController
+@interface ZZLinkageScrollViewController : UIViewController <ZZLinkageScrollHeaderViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 /** 网络图片 url string 数组 */
 @property (nonatomic, strong) NSArray *imageURLStringsGroup;
@@ -23,6 +24,9 @@
 /** 滑动文字数组 */
 @property (nonatomic, strong) NSArray <NSString *> *titleArray;
 
+/** 当前TableView */
 @property (nonatomic, strong) ZZLinkageScrollTableView *currentTableView;
+
+- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)cellId;
 
 @end

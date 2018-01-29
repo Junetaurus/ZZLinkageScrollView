@@ -7,10 +7,15 @@
 //
 
 #import "ViewController.h"
+#import "CustomCell.h"
 
 @interface ViewController ()
 
+@property (nonatomic, strong) NSMutableArray *cellDataImageArray;
+
 @end
+
+static NSString *cellID = @"cell";
 
 @implementation ViewController
 
@@ -26,14 +31,40 @@
     }
     self.localizationImageNamesGroup = [imageArray copy];
     
+    [self registerClass:[CustomCell class] forCellReuseIdentifier:cellID];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (NSMutableArray *)cellDataImageArray {
+    if (!_cellDataImageArray) {
+        _cellDataImageArray = [NSMutableArray array];
+        for (NSInteger i = 1; i < 10; i++) {
+            UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"recomand_%02ld",i] ofType:@"jpg"]];
+            [_cellDataImageArray
+             addObject:image];
+        }
+    }
+    return _cellDataImageArray;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 8;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    cell.customImageView.image = self.cellDataImageArray[arc4random() % self.cellDataImageArray.count];
+    cell.customLabel.text = [NSString stringWithFormat:@"XXXXX%ldXXXXX",indexPath.item];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [CustomCell customCellHeight];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

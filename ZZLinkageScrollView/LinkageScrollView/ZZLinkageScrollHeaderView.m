@@ -156,12 +156,6 @@ static CGFloat btnSpacing = 20.0;
 
 - (void)btnClick:(UIButton *)btn {
     [self changeBtnState:btn];
-    
-    if (_lastSelectedBtn == btn) return;
-    //
-    if (_delegate && [_delegate respondsToSelector:@selector(titleScrollView:didSelectItemAtIndex:)]) {
-        [_delegate titleScrollView:_titleScrollView didSelectItemAtIndex:btn.tag - basisBtnTag];
-    }
 }
 
 - (void)changeBtnState:(UIButton *)btn {
@@ -181,6 +175,19 @@ static CGFloat btnSpacing = 20.0;
         _line.sd_x = btn.sd_x + btnSpacing/2;
         _line.sd_width = btn.sd_width - btnSpacing;
     }];
+    //
+    if (_titleScrollView.contentSize.width > _titleScrollView.sd_width) {
+        CGFloat needOffsetX = btn.sd_x - .5 * _titleScrollView.sd_width + .5 * btn.sd_width;
+        if (needOffsetX < 0 ) needOffsetX = 0;
+        if (needOffsetX > _titleScrollView.contentSize.width - _titleScrollView.sd_width) {
+            needOffsetX = _titleScrollView.contentSize.width - _titleScrollView.sd_width;
+        }
+        [_titleScrollView setContentOffset:CGPointMake(needOffsetX, 0) animated:YES];
+    }
+    //
+    if (_delegate && [_delegate respondsToSelector:@selector(titleScrollView:didSelectItemAtIndex:)]) {
+        [_delegate titleScrollView:_titleScrollView didSelectItemAtIndex:btn.tag - basisBtnTag];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

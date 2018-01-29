@@ -7,15 +7,15 @@
 //
 
 #import "ZZLinkageScrollViewController.h"
-#import "ZZLinkageScrollHeaderView.h"
 #import "ZZLinkageScrollTableView.h"
 
-@interface ZZLinkageScrollViewController () <ZZLinkageScrollHeaderViewDelegate, UIScrollViewDelegate>
+@interface ZZLinkageScrollViewController () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) ZZLinkageScrollHeaderView *scrollHeaderView;
 @property (nonatomic, strong) UIScrollView *mainScrollView;
 
 @property (nonatomic, strong) NSMutableArray <ZZLinkageScrollTableView *> *tableViewArray;
+@property (nonatomic, copy) NSString *cellId;
 
 @end
 
@@ -89,11 +89,19 @@
             CGFloat tableViewHeight = this.mainScrollView.bounds.size.height;
             ZZLinkageScrollTableView *tableView = [[ZZLinkageScrollTableView alloc] initWithFrame:CGRectMake(tableViewWidth * idx, 0, tableViewWidth, tableViewHeight) style:UITableViewStylePlain];
             tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            tableView.delegate = self;
+            tableView.dataSource = self;
             [this.mainScrollView addSubview:tableView];
             [this.tableViewArray addObject:tableView];
             if (idx == _titleArray.count - 1) this.mainScrollView.contentSize = CGSizeMake(tableViewWidth * _titleArray.count, tableViewHeight);
         }];
     }
+}
+
+- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)cellId {
+    [_tableViewArray enumerateObjectsUsingBlock:^(ZZLinkageScrollTableView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj registerClass:cellClass forCellReuseIdentifier:cellId];
+    }];
 }
 
 #pragma mark - ZZLinkageScrollHeaderViewDelegate
@@ -118,7 +126,18 @@
     if (scrollView == _mainScrollView) {
         NSInteger index = scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5;
         [self.scrollHeaderView linkageScrollTableViewScrollToIndex:index];
+        //
+        if (index < _tableViewArray.count) _currentTableView = _tableViewArray[index];
     }
+}
+
+#pragma mark - UITableViewDelegate && DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning {
