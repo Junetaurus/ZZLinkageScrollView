@@ -51,6 +51,7 @@
 		1F8C27E0201AD9A600607598 /* ZZLinkageScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C27DF201AD9A600607598 /* ZZLinkageScrollViewController.m */; };
 		1F8C27E3201ADAD600607598 /* ZZLinkageScrollTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C27E2201ADAD600607598 /* ZZLinkageScrollTableView.m */; };
 		1F8C27E6201ADC5500607598 /* ZZLinkageScrollHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8C27E5201ADC5500607598 /* ZZLinkageScrollHeaderView.m */; };
+		1FE4D71920202E5000743DD6 /* ZZLinkageScrollView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1FE4D71820202E4F00743DD6 /* ZZLinkageScrollView.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		1F8C27E2201ADAD600607598 /* ZZLinkageScrollTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLinkageScrollTableView.m; sourceTree = "<group>"; };
 		1F8C27E4201ADC5500607598 /* ZZLinkageScrollHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZLinkageScrollHeaderView.h; sourceTree = "<group>"; };
 		1F8C27E5201ADC5500607598 /* ZZLinkageScrollHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZLinkageScrollHeaderView.m; sourceTree = "<group>"; };
+		1FE4D71820202E4F00743DD6 /* ZZLinkageScrollView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ZZLinkageScrollView.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				1F64CB40201ECCAB00D66420 /* CustomCell.h */,
 				1F64CB41201ECCAB00D66420 /* CustomCell.m */,
 				1F8C2746201ACED200607598 /* Assets.xcassets */,
+				1FE4D71820202E4F00743DD6 /* ZZLinkageScrollView.gif */,
 				1F8C2748201ACED200607598 /* LaunchScreen.storyboard */,
 				1F8C274B201ACED200607598 /* Info.plist */,
 				1F8C274C201ACED200607598 /* main.m */,
@@ -336,6 +339,7 @@
 				1F8C277D201AD4B600607598 /* recomand_02.jpg in Resources */,
 				1F8C2763201AD4A600607598 /* cycle_05.jpg in Resources */,
 				1F64CB57201ED56900D66420 /* recomand_18.jpg in Resources */,
+				1FE4D71920202E5000743DD6 /* ZZLinkageScrollView.gif in Resources */,
 				1F64CB4E201ED56900D66420 /* recomand_16.jpg in Resources */,
 				1F8C2780201AD4B600607598 /* recomand_05.jpg in Resources */,
 				1F8C2781201AD4B600607598 /* recomand_06.jpg in Resources */,
